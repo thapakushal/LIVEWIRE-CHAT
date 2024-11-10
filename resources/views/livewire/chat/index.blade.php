@@ -6,7 +6,7 @@
 
     <!-- Chat List Section -->
     <div class="relative w-full md:w-[320px] xl:w-[400px] overflow-y-auto shrink-0 h-full border">
-        {{-- <livewire:chat.chat-list> <!-- Ensure this component exists --> --}}
+        <livewire:chat.chat-list> <!-- chat-list component-->
     </div>
 
     <!-- Draggable Divider -->
