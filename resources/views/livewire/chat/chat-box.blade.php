@@ -1,4 +1,1 @@
-<div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
-    chattttttt broo
-</div>
+<h1>fuck you</h1>

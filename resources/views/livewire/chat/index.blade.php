@@ -2,20 +2,26 @@
 
 @section('content')
 
-<div class="fixed inset-0 flex h-full overflow-hidden bg-white border rounded-t-lg lg:shadow-sm lg:top-16 lg:inset-x-2">
+<div class="fixed inset-0 flex h-full overflow-hidden bg-white rounded-t-lg shadow lg:top-16 lg:inset-x-2">
 
     <!-- Chat List Section -->
-    <div class="relative w-full md:w-[320px] xl:w-[400px] overflow-y-auto shrink-0 h-full border">
-        <livewire:chat.chat-list> <!-- chat-list component-->
+    <div class="relative h-full w-full md:w-[320px] xl:w-[400px] overflow-y-auto shrink-0 border-r">
+        <livewire:chat.chat-list /> <!-- chat-list component -->
     </div>
 
-    <!-- Draggable Divider -->
-    <div class="w-1 bg-gray-300 resize-x cursor-ew-resize"></div>
+    <!-- Draggable Divider using Alpine.js -->
+    <div 
+        class="w-1 bg-gray-300 cursor-ew-resize"
+        x-data="{ isDragging: false, startX: 0, startWidth: 0 }"
+        @mousedown="isDragging = true; startX = $event.clientX; startWidth = $el.previousElementSibling.offsetWidth"
+        @mousemove.window="if(isDragging) $el.previousElementSibling.style.width = `${startWidth + ($event.clientX - startX)}px`"
+        @mouseup.window="isDragging = false">
+    </div>
 
     <!-- Content Area (Side Section) -->
-    <div class="relative hidden w-full h-full overflow-y-auto border-l md:grid">
-        <div class="flex flex-col justify-center gap-3 m-auto text-center">
-            <h4 class="text-lg font-medium"> Choose a conversation to start chatting </h4>
+    <div class="hidden w-full h-full overflow-y-auto border-l md:grid">
+        <div class="flex flex-col items-center justify-center space-y-3 text-center">
+            <h4 class="text-lg font-medium">Choose a conversation to start chatting</h4>
         </div>
     </div>
 
@@ -24,30 +30,5 @@
 @endsection
 
 @section('scripts')
-<script>
-  const divider = document.querySelector('.resize-x');
-  let isDragging = false;
-
-  divider.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    const startX = e.clientX;
-    const startWidth = divider.previousElementSibling.offsetWidth; // Get the current width of the left panel
-    
-    const mouseMoveHandler = (e) => {
-      if (isDragging) {
-        const dx = e.clientX - startX; // Calculate the change in the X position
-        divider.previousElementSibling.style.width = `${startWidth + dx}px`; // Update the width of the left panel
-      }
-    };
-
-    const mouseUpHandler = () => {
-      isDragging = false;
-      document.removeEventListener('mousemove', mouseMoveHandler);
-      document.removeEventListener('mouseup', mouseUpHandler);
-    };
-
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
-  });
-</script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 @endsection
