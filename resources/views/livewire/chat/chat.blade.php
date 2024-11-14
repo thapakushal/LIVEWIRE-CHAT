@@ -18,15 +18,24 @@
         @mouseup.window="isDragging = false">
     </div>
 
+    
+    
+    
     <!-- Content Area (Side Section) -->
-    <div class="flex items-center justify-center w-full h-full overflow-y-auto">
+    {{-- <div class="flex items-center justify-center w-full h-full overflow-y-auto"> --}}
         {{-- <div class="space-y-3 text-center">
             <h4 class="text-lg font-medium">Choose a conversation to start chatting</h4>
         </div> --}}
-        
+{{--         
+        <livewire:chat.chat-box>
+    </div> --}}
+
+    
+    <div class="relative grid w-full h-full overflow-y-auto border-l">
         <livewire:chat.chat-box>
     </div>
-
+    
+    
 </div>
 
 @endsection

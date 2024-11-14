@@ -4,26 +4,26 @@
 
 <div class="fixed inset-0 flex h-full overflow-hidden bg-white rounded-t-lg shadow lg:top-16 lg:inset-x-2">
 
-    <!-- Chat List Section -->
-    <div class="relative h-full w-full md:w-[320px] xl:w-[400px] overflow-y-auto shrink-0 border-r">
-        <livewire:chat.chat-list /> <!-- chat-list component -->
-    </div>
+  <!-- Chat List Section -->
+  <div class="relative h-full w-full md:w-[320px] xl:w-[400px] overflow-y-auto shrink-0 border-r">
+      <livewire:chat.chat-list /> <!-- chat-list component -->
+  </div>
 
-    <!-- Draggable Divider using Alpine.js -->
-    <div 
-        class="w-1 bg-gray-300 cursor-ew-resize"
-        x-data="{ isDragging: false, startX: 0, startWidth: 0 }"
-        @mousedown="isDragging = true; startX = $event.clientX; startWidth = $el.previousElementSibling.offsetWidth"
-        @mousemove.window="if(isDragging) $el.previousElementSibling.style.width = `${startWidth + ($event.clientX - startX)}px`"
-        @mouseup.window="isDragging = false">
-    </div>
+  <!-- Draggable Divider using Alpine.js -->
+  <div 
+      class="w-1 bg-gray-300 cursor-ew-resize"
+      x-data="{ isDragging: false, startX: 0, startWidth: 0 }"
+      @mousedown="isDragging = true; startX = $event.clientX; startWidth = $el.previousElementSibling.offsetWidth"
+      @mousemove.window="if(isDragging) $el.previousElementSibling.style.width = `${startWidth + ($event.clientX - startX)}px`"
+      @mouseup.window="isDragging = false">
+  </div>
 
-    <!-- Content Area (Side Section) -->
-    <div class="hidden w-full h-full overflow-y-auto border-l md:grid">
-        <div class="flex flex-col items-center justify-center space-y-3 text-center">
-            <h4 class="text-lg font-medium">Choose a conversation to start chatting</h4>
-        </div>
-    </div>
+  <!-- Content Area (Side Section) -->
+  <div class="hidden w-full h-full overflow-y-auto border-l md:grid">
+      <div class="flex flex-col items-center justify-center space-y-3 text-center">
+          <h4 class="text-lg font-medium">Choose a conversation to start chatting</h4>
+      </div>
+  </div>
 
 </div>
 
